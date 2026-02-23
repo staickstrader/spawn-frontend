@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Note: 'export' mode removed to support API routes (GitHub OAuth)
+  // For static hosting, deploy to Vercel/Netlify which handles API routes
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/spawn-frontend' : '',
+  // Base path for production (adjust based on deployment)
+  // basePath: process.env.NODE_ENV === 'production' ? '' : '',
 };
 
 export default nextConfig;

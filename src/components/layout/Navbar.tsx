@@ -2,9 +2,15 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Button } from '../ui';
-import { DashboardLink } from './DashboardLink';
+
+// Dynamic import with SSR disabled to avoid useAccount during static generation
+const DashboardLink = dynamic(
+  () => import('./DashboardLink').then(mod => mod.DashboardLink),
+  { ssr: false }
+);
 
 const publicLinks = [
   { href: '/agents', label: 'Agents' },
